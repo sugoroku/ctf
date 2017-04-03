@@ -1,0 +1,4 @@
+file ./char
+target remote localhost:1234
+b *0x804882e
+c

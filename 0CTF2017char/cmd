@@ -1,0 +1,8 @@
+deactive alarm
+
+# before StringCopy at main
+b *0x804882e
+
+shell python -c 'print "A"*32 + "B"*4' > pwn
+run < pwn
+
