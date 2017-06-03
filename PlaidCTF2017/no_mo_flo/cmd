@@ -1,0 +1,11 @@
+deactive alarm
+
+# read()
+b *0x40274a
+
+b *0x402775
+
+b *0x4027e0
+
+#python -c 'print "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"' > pwn
+run < pwn

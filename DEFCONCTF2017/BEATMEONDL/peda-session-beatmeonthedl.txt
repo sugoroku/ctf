@@ -1,0 +1,3 @@
+break *0x401273
+break *0x405adc
+

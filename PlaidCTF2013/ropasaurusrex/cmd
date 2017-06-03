@@ -1,0 +1,8 @@
+file ./ropasaurusrex
+target remote localhost:1234
+b *0x0804841C
+c
+
+#shell python -c 'print "A"*140 + "BBBB"' > pwn
+#r < pwn
+

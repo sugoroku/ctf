@@ -1,0 +1,65 @@
+gdb-peda$ telescope 0x0060a000 40
+0000| 0x60a000 --> 0x0
+0008| 0x60a008 --> 0x23 ('#')
+0016| 0x60a010 ("awesnap\n")
+0024| 0x60a018 --> 0x0
+0032| 0x60a020 --> 0x0
+0040| 0x60a028 --> 0x43 ('C')
+0048| 0x60a030 ('A' <repeats 47 times>, "\n")
+0056| 0x60a038 ('A' <repeats 39 times>, "\n")
+0064| 0x60a040 ('A' <repeats 31 times>, "\n")
+0072| 0x60a048 ('A' <repeats 23 times>, "\n")
+0080| 0x60a050 ('A' <repeats 15 times>, "\n")
+0088| 0x60a058 ("AAAAAAA\n")
+0096| 0x60a060 --> 0x0
+0104| 0x60a068 --> 0x43 ('C')
+0112| 0x60a070 ('B' <repeats 55 times>, "\n\021\017")
+0120| 0x60a078 ('B' <repeats 47 times>, "\n\021\017")
+0128| 0x60a080 ('B' <repeats 39 times>, "\n\021\017")
+0136| 0x60a088 ('B' <repeats 31 times>, "\n\021\017")
+0144| 0x60a090 ('B' <repeats 23 times>, "\n\021\017")
+0152| 0x60a098 ('B' <repeats 15 times>, "\n\021\017")
+0160| 0x60a0a0 ("BBBBBBB\n\021\017")
+0168| 0x60a0a8 --> 0xf11
+0176| 0x60a0b0 --> 0x0
+0184| 0x60a0b8 --> 0x0
+0192| 0x60a0c0 --> 0x0
+
+gdb-peda$ telescope 0x0060a000 40
+0000| 0x60a000 --> 0x0
+0008| 0x60a008 --> 0x23 ('#')
+0016| 0x60a010 ("awesnap\n")
+0024| 0x60a018 --> 0x0
+0032| 0x60a020 --> 0x0
+0040| 0x60a028 --> 0x43 ('C')
+0048| 0x60a030 ('A' <repeats 47 times>, "\n")
+0056| 0x60a038 ('A' <repeats 39 times>, "\n")
+0064| 0x60a040 ('A' <repeats 31 times>, "\n")
+0072| 0x60a048 ('A' <repeats 23 times>, "\n")
+0080| 0x60a050 ('A' <repeats 15 times>, "\n")
+0088| 0x60a058 ("AAAAAAA\n")
+0096| 0x60a060 --> 0x0
+0104| 0x60a068 --> 0x41 ('A')
+0112| 0x60a070 --> 0x609b88 --> 0x609b78 --> 0x609b68 --> 0x609b58 --> 0x609b48 (--> ...)
+0120| 0x60a078 --> 0x609b88 --> 0x609b78 --> 0x609b68 --> 0x609b58 --> 0x609b48 (--> ...)
+0128| 0x60a080 ('B' <repeats 32 times>, "@")
+0136| 0x60a088 ('B' <repeats 24 times>, "@")
+0144| 0x60a090 ('B' <repeats 16 times>, "@")
+0152| 0x60a098 ("BBBBBBBB@")
+0160| 0x60a0a0 --> 0x40 ('@')
+0168| 0x60a0a8 --> 0x42 ('B')
+0176| 0x60a0b0 ('C' <repeats 55 times>, "\n\321\016")
+0184| 0x60a0b8 ('C' <repeats 47 times>, "\n\321\016")
+0192| 0x60a0c0 ('C' <repeats 39 times>, "\n\321\016")
+--More--(25/40)
+0200| 0x60a0c8 ('C' <repeats 31 times>, "\n\321\016")
+0208| 0x60a0d0 ('C' <repeats 23 times>, "\n\321\016")
+0216| 0x60a0d8 ('C' <repeats 15 times>, "\n\321\016")
+0224| 0x60a0e0 ("CCCCCCC\n\321\016")
+0232| 0x60a0e8 --> 0xed1
+
+0008| 0x609b08 --> 0x0
+
+0392| 0x609d10 --> 0x609cf8 --> 0x609ce8 --> 0x609cd8 --> 0x609cc8 --> 0x609cb8 (--> ...)
+
+

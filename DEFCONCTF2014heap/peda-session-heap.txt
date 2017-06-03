@@ -1,10 +1,2 @@
-break *0x8048650
-  commands
-    silent
-    set $eax = 0
-    return
-    continue
-  end
-break *0x8048afa
-break *0x8048aa6
+tbreak main
 

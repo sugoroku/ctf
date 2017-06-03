@@ -1,0 +1,37 @@
+# read() in checkuser
+#b *0x400d8b
+
+# memcmp() in checkuser
+#b *0x400dc1
+
+# read() in checkpass
+#b *0x400e3b
+
+# init login() in main()
+#b *0x401265
+
+# init print_menu() in main()
+b *0x401273
+
+# add_request()
+#b *0x400ff0
+
+# update_request()
+#b *0x401198
+
+# delete_request()
+#b *0x401110
+
+# print_list()
+#b *0x4010be
+
+# malloc()
+b *0x405adc
+
+# username: mcfly
+# password: awesnap
+#shell python -c 'print "mcfly\n" + "awesnap\n"' > pwn
+#shell python -c 'print "mcfly" + "\n" + "awesnap" + "\n" + "1" + "\n"' > pwn
+
+#r < pwn
+r

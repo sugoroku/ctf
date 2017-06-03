@@ -1,0 +1,106 @@
+2188   402762: b8 ff ff ff ff        mov    eax,0xffffffff
+2189   402767: e9 9b 00 00 00        jmp    402807 <strerror@plt+0x2247>
+2190   40276c: c7 45 fc 00 00 00 00  mov    DWORD PTR [rbp-0x4],0x0
+2191   402773: eb 3a                 jmp    4027af <strerror@plt+0x21ef>      *
+
+0xf loop
+2192   402775: 8b 45 fc              mov    eax,DWORD PTR [rbp-0x4]           ***
+2193   402778: 01 c0                 add    eax,eax
+2194   40277a: 48 98                 cdqe
+2195   40277c: 0f b6 44 05 d0        movzx  eax,BYTE PTR [rbp+rax*1-0x30]     input -> eax
+2196   402781: 0f be d0              movsx  edx,al                            eax -> edx
+2197   402784: 8b 45 fc              mov    eax,DWORD PTR [rbp-0x4]           0 -> eax
+2198   402787: 48 98                 cdqe                                     
+2199   402789: 89 94 85 50 ff ff ff  mov    DWORD PTR [rbp+rax*4-0xb0],edx
+2200   402790: 8b 45 fc              mov    eax,DWORD PTR [rbp-0x4]
+2201   402793: 01 c0                 add    eax,eax
+2202   402795: 83 c0 01              add    eax,0x1                           idx++
+2203   402798: 48 98                 cdqe
+2204   40279a: 0f b6 44 05 d0        movzx  eax,BYTE PTR [rbp+rax*1-0x30]
+2205   40279f: 0f be d0              movsx  edx,al
+2206   4027a2: 8b 45 fc              mov    eax,DWORD PTR [rbp-0x4]
+2207   4027a5: 48 98                 cdqe
+2208   4027a7: 89 54 85 90           mov    DWORD PTR [rbp+rax*4-0x70],edx
+2209   4027ab: 83 45 fc 01           add    DWORD PTR [rbp-0x4],0x1           cnt++
+2210   4027af: 83 7d fc 0f           cmp    DWORD PTR [rbp-0x4],0xf          * *** while(cnt<16){ goto 0x402775)
+2211   4027b3: 7e c0                 jle    402775 <strerror@plt+0x21b5>
+
+2222   4027e0: 83 7d f4 00           cmp    DWORD PTR [rbp-0xc],0x0
+2223   4027e4: 74 12                 je     4027f8 <strerror@plt+0x2238>     **
+
+2224   4027e6: 83 7d f0 00           cmp    DWORD PTR [rbp-0x10],0x0
+2225   4027ea: 74 0c                 je     4027f8 <strerror@plt+0x2238>     **
+
+2226   4027ec: bf 65 2d 40 00        mov    edi,0x402d65
+2227   4027f1: e8 5a dd ff ff        call   400550 <puts@plt>
+2228   4027f6: eb 0a                 jmp    402802 <strerror@plt+0x2242>
+2229   4027f8: bf 78 2d 40 00        mov    edi,0x402d78                     **
+2230   4027fd: e8 4e dd ff ff        call   400550 <puts@plt>
+2231   402802: b8 00 00 00 00        mov    eax,0x0
+2232   402807: c9                    leave
+2233   402808: c3                    ret
+
+gdb-peda$ telescope $rbp-0x4
+0000| 0x7fffffffdeec --> 0x402cd000000000
+
+gdb-peda$ telescope $rbp-0x4 0x1
+0000| 0x7fffffffdeec --> 0x402cd000000000
+
+gdb-peda$ telescope $rbp+rax*1-0x30 0x1
+0000| 0x7fffffffdf01 --> 0xd800000000000000
+
+gdb-peda$ telescope $rbp-0x4 0x1
+0000| 0x7fffffffdeec --> 0x402cd000000000
+
+0x402789:  mov    DWORD PTR [rbp+rax*4-0xb0],edx
+gdb-peda$ telescope $rbp+rax*4-0xb0 0x1
+0000| 0x7fffffffde40 --> 0x2f2f2f2f00000041 ('A')
+
+   0x402790:  mov    eax,DWORD PTR [rbp-0x4]
+gdb-peda$ telescope $rbp-0x4 0x1
+0000| 0x7fffffffdeec --> 0x402cd000000000
+
+=> 0x40279a:  movzx  eax,BYTE PTR [rbp+rax*1-0x30]
+gdb-peda$ telescope  $rbp+rax*1-0x30 0x1
+0000| 0x7fffffffdec1 ('A' <repeats 31 times>, "\320\337\377\377\377\177")
+
+gdb-peda$ telescope $rbp-0x4 0x1
+0000| 0x7fffffffdeec --> 0x402cd000000000
+
+gdb-peda$ telescope $rbp+rax*4-0x70 0x1
+0000| 0x7fffffffde80 --> 0x41 ('A')
+
+
+gdb-peda$ telescope 0x7fffffffde40 32
+0000| 0x7fffffffde40 --> 0x6300000061 ('a')
+0008| 0x7fffffffde48 --> 0x6700000065 ('e')
+0016| 0x7fffffffde50 --> 0x6b00000069 ('i')
+0024| 0x7fffffffde58 --> 0x6f0000006d ('m')
+0032| 0x7fffffffde60 --> 0x7300000071 ('q')
+0040| 0x7fffffffde68 --> 0x7700000075 ('u')
+0048| 0x7fffffffde70 --> 0x4100000079 ('y')
+0056| 0x7fffffffde78 --> 0x4500000043 ('C')
+0064| 0x7fffffffde80 --> 0x6400000062 ('b')
+0072| 0x7fffffffde88 --> 0x6800000066 ('f')
+0080| 0x7fffffffde90 --> 0x6c0000006a ('j')
+0088| 0x7fffffffde98 --> 0x700000006e ('n')
+0096| 0x7fffffffdea0 --> 0x7400000072 ('r')
+0104| 0x7fffffffdea8 --> 0x7800000076 ('v')
+0112| 0x7fffffffdeb0 --> 0x420000007a ('z')
+0120| 0x7fffffffdeb8 --> 0x4600000044 ('D')
+0128| 0x7fffffffdec0 ("abcdefghijklmnopqrstuvwxyzABCDEF")
+0136| 0x7fffffffdec8 ("ijklmnopqrstuvwxyzABCDEF")
+0144| 0x7fffffffded0 ("qrstuvwxyzABCDEF")
+0152| 0x7fffffffded8 ("yzABCDEF")
+0160| 0x7fffffffdee0 --> 0x0
+0168| 0x7fffffffdee8 --> 0x1000000020
+0176| 0x7fffffffdef0 --> 0x402cd0 (push   r15)
+0184| 0x7fffffffdef8 --> 0x7ffff7a2e830 (<__libc_start_main+240>: mov    edi,eax)
+
+RBP: 0x7fffffffdef0 --> 0x402cd0 (push   r15)
+
+gdb-peda$ telescope $rbp-0xc 0x1
+0000| 0x7fffffffdee4 --> 0x2000000000 ('')
+gdb-peda$ telescope $rbp-0x10 0x1
+0000| 0x7fffffffdee0 --> 0x0
+
