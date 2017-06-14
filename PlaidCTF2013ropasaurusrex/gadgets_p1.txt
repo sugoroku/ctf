@@ -1,0 +1,45 @@
+Trying to open './ropasaurusrex'..
+Loading ELF information..
+FileFormat: Elf, Arch: Ia32
+Using the Nasm syntax..
+
+Wait a few seconds, rp++ is looking for gadgets..
+in PHDR
+0 found.
+
+in LOAD
+52 found.
+
+A total of 52 gadgets found.
+You decided to keep only the unique ones, 30 unique gadgets found.
+[91m0x080483a6[0m: [92madd al, 0x08 ; call dword [0x08049524+eax*4] ;  (1 found)
+[0m[91m0x080483ed[0m: [92madd al, 0x08 ; call eax ;  (1 found)
+[0m[91m0x080482f0[0m: [92madd al, 0x08 ; jmp dword [0x0804960C] ;  (1 found)
+[0m[91m0x080484a2[0m: [92madd al, 0x24 ; call dword [ebx+esi*4-0x000000E8] ;  (1 found)
+[0m[91m0x080482fa[0m: [92madd byte [eax], al ; jmp dword [0x08049610] ;  (1 found)
+[0m[91m0x080482c7[0m: [92madd byte [ebx-0x7F], bl ; ret  ;  (2 found)
+[0m[91m0x080483a2[0m: [92madd dword [ebx+0x0804962C], esp ; call dword [0x08049524+eax*4] ;  (1 found)
+[0m[91m0x080483be[0m: [92madd dword [ebx+0x5D5B04C4], eax ; ret  ;  (1 found)
+[0m[91m0x080483a8[0m: [92mcall dword [0x08049524+eax*4] ;  (1 found)
+[0m[91m0x080484a4[0m: [92mcall dword [ebx+esi*4-0x000000E8] ;  (1 found)
+[0m[91m0x080483ef[0m: [92mcall eax ;  (2 found)
+[0m[91m0x0804841a[0m: [92mdec ecx ; ret  ;  (2 found)
+[0m[91m0x08048452[0m: [92min eax, 0x5D ; ret  ;  (1 found)
+[0m[91m0x080482f2[0m: [92mjmp dword [0x0804960C] ;  (1 found)
+[0m[91m0x080482fc[0m: [92mjmp dword [0x08049610] ;  (1 found)
+[0m[91m0x0804830c[0m: [92mjmp dword [0x08049614] ;  (1 found)
+[0m[91m0x0804831c[0m: [92mjmp dword [0x08049618] ;  (1 found)
+[0m[91m0x0804832c[0m: [92mjmp dword [0x0804961C] ;  (1 found)
+[0m[91m0x080482ea[0m: [92mleave  ; ret  ;  (5 found)
+[0m[91m0x080483a3[0m: [92mmov dword [0x0804962C], eax ; call dword [0x08049524+eax*4] ;  (1 found)
+[0m[91m0x080483e8[0m: [92mmov dword [esp], 0x0804952C ; call eax ;  (1 found)
+[0m[91m0x080484a1[0m: [92mmov dword [esp], eax ; call dword [ebx+esi*4-0x000000E8] ;  (1 found)
+[0m[91m0x080484ba[0m: [92mmov ebx, dword [esp] ; ret  ;  (1 found)
+[0m[91m0x080483c3[0m: [92mpop ebp ; ret  ;  (4 found)
+[0m[91m0x080482ec[0m: [92mpush dword [0x08049608] ; jmp dword [0x0804960C] ;  (1 found)
+[0m[91m0x080482ca[0m: [92mret  ;  (13 found)
+[0m[91m0x080483f0[0m: [92mror cl, 1  ; ret  ;  (1 found)
+[0m[91m0x080484bb[0m: [92msbb al, 0x24 ; ret  ;  (1 found)
+[0m[91m0x080484d8[0m: [92msub ebx, 0x04 ; call eax ;  (1 found)
+[0m[91m0x080482ed[0m: [92mxor eax, 0x08049608 ; jmp dword [0x0804960C] ;  (1 found)
+[0m
