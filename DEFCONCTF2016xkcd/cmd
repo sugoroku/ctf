@@ -1,0 +1,4 @@
+b *0x40101d 
+
+shell python -c 'import struct; bin = struct.pack("<Q", int("0x524556524553003f", 16));print "TEST" + bin;' > pwn
+r << pwn
